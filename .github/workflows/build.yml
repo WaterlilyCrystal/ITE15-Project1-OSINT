@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with:
-          distribution: 'openjdk'
+          distribution: 'jdkfile'
           java-version: '22'
 
       - name: Cache SonarQube packages
