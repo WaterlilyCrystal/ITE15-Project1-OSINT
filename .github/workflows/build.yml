@@ -13,12 +13,11 @@ jobs:
     permissions: read-all
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: Set up JDK 22
-        uses: actions/setup-java@v4
-        with:
-          java-version: 22
+          distribution: 'temurin' # See 'Supported distributions' for available options
+          java-version: '21'
+
       - name: Cache SonarQube packages
         uses: actions/cache@v4
         with:
