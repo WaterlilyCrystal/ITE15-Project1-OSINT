@@ -13,8 +13,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
-          java-version: '11'
+          distribution: 'openjdk'
+          java-version: '22'
 
       - name: Cache SonarQube packages
         uses: actions/cache@v4
