@@ -1,1 +1,11 @@
-node { stage('SCM') { git branch: 'main', credentialsId: 'waterlily_id', url: ' https://github.com/WaterlilyCrystal/ITE15-Project1-OSINT.git' } stage('SonarQube Analysis') { def scannerHome = tool 'SonarQube Scanner'; withSonarQubeEnv() { sh "${scannerHome}/bin/sonar-scanner -Dsonar.java.binaries=. -Dsonar.projectKey=OSINT - Dsonar.login=sqa_204329f31cc962c6a92207348cf2f1e53b8e466b " } } }
+node {
+  stage('SCM') {
+    checkout scm
+  }
+  stage('SonarQube Analysis') {
+    def mvn = tool 'Default Maven';
+    withSonarQubeEnv() {
+      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Project-1 -Dsonar.projectName='Project 1'"
+    }
+  }
+}
